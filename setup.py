@@ -1,11 +1,17 @@
 from setuptools import setup
 
+
+def read(f):
+    return open(f, 'r', encoding='utf-8').read()
+
+
 setup(
     name="django-talkto",
-    version=0.1,
+    version=0.2,
     description="A Django app to talk to APIs.",
-    long_description="file: README.md",
-    url="https://www.biodun.dev/",
+    long_description=read("README.md"),
+    long_description_content_type='text/markdown',
+    url="https://github.com/sirrobot01/django-talkto",
     author="Akere Mukhtar",
     author_email="akeremukhtar10@gmail.com",
     license="BSD-3-Clause",
@@ -27,9 +33,12 @@ setup(
     ],
     install_requires=[
         "httpx",
-        "django"
+        "django>=2.2"
     ],
     extras_require={
         'rest': ["djangorestframework"]
-    }
+    },
+    project_urls={
+        'Source': 'https://github.com/sirrobot01/django-talkto',
+    },
 )
