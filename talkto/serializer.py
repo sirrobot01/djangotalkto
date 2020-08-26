@@ -1,4 +1,4 @@
-from talkto import querydict_to_dict
+from .utils import querydict_to_dict
 
 try:
     from rest_framework.serializers import ModelSerializer

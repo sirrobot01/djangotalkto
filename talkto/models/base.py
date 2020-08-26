@@ -13,7 +13,6 @@ from django.db.models.signals import class_prepared
 from django.db.models.utils import make_model_tuple
 
 from talkto.utils import _has_contribute_to_class
-from .managers import APIManager, BASE_URL
 
 
 class ModelMeta(type):
@@ -255,15 +254,6 @@ class ModelMeta(type):
         get_absolute_url_override = settings.ABSOLUTE_URL_OVERRIDES.get(opts.label_lower)
         if get_absolute_url_override:
             setattr(cls, 'get_absolute_url', get_absolute_url_override)
-
-        if not opts.managers:
-            if any(f.name == 'objects' for f in opts.fields):
-                raise ValueError(
-                    "Model %s must specify a custom Manager, because it has a "
-                    "field named 'objects'." % cls.__name__
-                )
-            manager = APIManager(path=BASE_URL)
-            cls.add_to_class('api', manager)
 
         # Set the name of _meta.indexes. This can't be done in
         # Options.contribute_to_class() because fields haven't been added to

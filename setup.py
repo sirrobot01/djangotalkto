@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(f):
@@ -6,12 +6,12 @@ def read(f):
 
 
 setup(
-    name="django-talkto",
-    version=0.2,
+    name="djangotalkto",
+    version='0.1.3',
     description="A Django app to talk to APIs.",
     long_description=read("README.md"),
     long_description_content_type='text/markdown',
-    url="https://github.com/sirrobot01/django-talkto",
+    url="https://github.com/sirrobot01/djangotalkto",
     author="Akere Mukhtar",
     author_email="akeremukhtar10@gmail.com",
     license="BSD-3-Clause",
@@ -35,10 +35,11 @@ setup(
         "httpx",
         "django>=2.2"
     ],
+    packages=find_packages(),
     extras_require={
         'rest': ["djangorestframework"]
     },
     project_urls={
-        'Source': 'https://github.com/sirrobot01/django-talkto',
+        'Source': 'https://github.com/sirrobot01/djangotalkto',
     },
 )
